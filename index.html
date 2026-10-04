@@ -1,0 +1,495 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>OptiFit | 3D Virtual Eyewear</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            OPTIFIT
+        </div>
+
+        <div class="nav-links">
+            <a href="#tryon">Try On</a>
+            <a href="#collection">Collection</a>
+            <a href="#about">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                3D VIRTUAL EYEWEAR
+            </p>
+
+            <h1>
+                Find the frame
+                <span>that fits you.</span>
+            </h1>
+
+            <p class="hero-description">
+                Experience eyewear in a new dimension.
+                Try premium 3D frames using your camera
+                or upload your own photo.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="openTryOn()">
+
+                TRY ON NOW
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRY ON -->
+    <section id="tryon" class="tryon">
+
+        <p class="eyebrow">
+            VIRTUAL TRY-ON
+        </p>
+
+        <h2>
+            Choose your experience
+        </h2>
+
+
+        <div class="try-options">
+
+            <!-- CAMERA -->
+            <div class="try-card">
+
+                <div class="icon">
+                    📷
+                </div>
+
+                <h3>
+                    Live Camera
+                </h3>
+
+                <p>
+                    Try 3D eyewear in real time
+                    using your webcam.
+                </p>
+
+                <button
+                    onclick="startCamera()">
+
+                    USE CAMERA
+
+                </button>
+
+            </div>
+
+
+            <!-- PHOTO -->
+            <div class="try-card">
+
+                <div class="icon">
+                    🖼️
+                </div>
+
+                <h3>
+                    Upload Photo
+                </h3>
+
+                <p>
+                    Upload a photo and virtually
+                    try different frames.
+                </p>
+
+                <button
+                    onclick="selectPhoto()">
+
+                    UPLOAD PHOTO
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/png,image/jpeg,image/webp"
+            hidden>
+
+
+        <!-- CAMERA / 3D VIEWER -->
+        <div id="viewer">
+
+            <video
+                id="cameraVideo"
+                autoplay
+                playsinline
+                muted>
+            </video>
+
+            <div id="cameraStatus">
+                CAMERA OFF
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- FRAME INFORMATION PANEL -->
+        <!-- ================================================= -->
+
+        <div id="frame-info-panel" class="frame-info-panel">
+
+            <div class="frame-info-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        SELECTED FRAME
+                    </p>
+
+                    <h2 id="info-frame-name">
+                        Wayfarer
+                    </h2>
+
+                </div>
+
+                <div
+                    id="info-frame-price"
+                    class="frame-price">
+
+                    ₹2,499
+
+                </div>
+
+            </div>
+
+
+            <div class="frame-info-content">
+
+                <div class="info-item">
+
+                    <span>
+                        STYLE
+                    </span>
+
+                    <strong id="info-frame-style">
+                        Bold
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span>
+                        MATERIAL
+                    </span>
+
+                    <strong id="info-frame-material">
+                        Acetate
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span>
+                        COLOR
+                    </span>
+
+                    <strong id="info-frame-color">
+                        Black
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span>
+                        FIT
+                    </span>
+
+                    <strong id="info-frame-fit">
+                        Medium
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="frame-info-description">
+
+                <p id="info-frame-description">
+
+                    A bold everyday frame designed
+                    for a modern and confident look.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="frame-try-button"
+                onclick="openTryOn()">
+
+                TRY THIS FRAME
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- COLLECTION -->
+    <section id="collection" class="collection">
+
+        <p class="eyebrow">
+            OPTIFIT COLLECTION
+        </p>
+
+        <h2>
+            Explore the frames
+        </h2>
+
+
+        <div class="frames">
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Aviator')">
+
+                <div class="frame-preview">
+                    AVIATOR
+                </div>
+
+                <h3>Aviator</h3>
+                <p>Classic</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Wayfarer')">
+
+                <div class="frame-preview">
+                    WAYFARER
+                </div>
+
+                <h3>Wayfarer</h3>
+                <p>Bold</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Cat-Eye')">
+
+                <div class="frame-preview">
+                    CAT-EYE
+                </div>
+
+                <h3>Cat-Eye</h3>
+                <p>Fashion</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Clubmaster')">
+
+                <div class="frame-preview">
+                    CLUBMASTER
+                </div>
+
+                <h3>Clubmaster</h3>
+                <p>Premium</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Square')">
+
+                <div class="frame-preview">
+                    SQUARE
+                </div>
+
+                <h3>Square</h3>
+                <p>Modern</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Hexagonal')">
+
+                <div class="frame-preview">
+                    HEXAGONAL
+                </div>
+
+                <h3>Hexagonal</h3>
+                <p>Geometric</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Oval')">
+
+                <div class="frame-preview">
+                    OVAL
+                </div>
+
+                <h3>Oval</h3>
+                <p>Elegant</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Rectangle')">
+
+                <div class="frame-preview">
+                    RECTANGLE
+                </div>
+
+                <h3>Rectangle</h3>
+                <p>Frost</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Round')">
+
+                <div class="frame-preview">
+                    ROUND
+                </div>
+
+                <h3>Round</h3>
+                <p>Vintage</p>
+
+            </div>
+
+
+            <div
+                class="frame-card"
+                onclick="selectFrame('Sport')">
+
+                <div class="frame-preview">
+                    SPORT
+                </div>
+
+                <h3>Sport</h3>
+                <p>Active</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+
+        <p class="eyebrow">
+            ABOUT OPTIFIT
+        </p>
+
+        <h2>
+            Eyewear,
+            <span>reimagined.</span>
+        </h2>
+
+        <p>
+            OptiFit combines 3D graphics,
+            computer vision and artificial intelligence
+            to create an interactive virtual eyewear
+            experience.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 OptiFit
+        </p>
+
+    </footer>
+
+
+    <!-- THREE.JS -->
+    <script type="importmap">
+
+    {
+        "imports": {
+
+            "three":
+            "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+
+            "three/addons/":
+            "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+
+        }
+    }
+
+    </script>
+
+
+    <!-- FACE TRACKING -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js">
+    </script>
+
+
+    <!-- APP -->
+    <script
+        type="module"
+        src="app.js">
+    </script>
+
+</body>
+
+</html>
